@@ -3,7 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import postRouter from "./router/post/post.route.js";
 import userRouter from "./router/user/user.route.js";
-
+import commentRouter from "./router/comment/comment.route.js";
 const app = express();
 const port = 10000;
 
@@ -23,9 +23,11 @@ const connect = async () => {
 
 connect();
 
+app.use("/", userRouter);
+
 app.use("/", postRouter);
 
-app.use("/", userRouter);
+app.use("/", commentRouter);
 
 app.listen(port, () => {
   console.log(`Instagram backend is running on port ${port}`);
