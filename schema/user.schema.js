@@ -5,7 +5,7 @@ const User = new mongoose.Schema({
   email: { type: String, required: true },
   profilePicture: { type: String, required: false },
   password: { type: String, required: true },
-  bio: { type: String, required: false },
+  bio: { type: String, required:  false},
   followers: [{ type: Schema.Types.ObjectId, required: true }],
   following: [{ type: Schema.Types.ObjectId, required: true }],
   createdAt: { type: Date, default: Date.now },
