@@ -5,6 +5,7 @@ import { authMiddleware } from "../../middleware/auth-middleware.js";
 import { alluserPost } from "../../controller/post/get-all-user-post.js";
 import { togglePostLike } from "../../controller/post/toggle-post-like.js";
 import { clickedUserPost } from "../../controller/post/get-clicked-user-post.js";
+import { deleteUserPost } from "../../controller/post/deletePost.js";
 
 const postRouter = express.Router();
 postRouter.get("/userPost", authMiddleware, userPost);
@@ -12,5 +13,5 @@ postRouter.get("/allPost", authMiddleware, alluserPost);
 postRouter.post("/createPost", authMiddleware, createPost);
 postRouter.post("/post/toggle-like/:postId", authMiddleware, togglePostLike);
 postRouter.get("/clicked-user-post/:userId", authMiddleware, clickedUserPost);
-
+postRouter.delete("/deletePostUser/:postId", authMiddleware, deleteUserPost);
 export default postRouter;
