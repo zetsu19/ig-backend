@@ -13,7 +13,7 @@ app.use(express.json());
 const connect = async () => {
   try {
     await mongoose.connect(
-      "mongodb+srv://zetsu:Hurd2020@zetsu.qeaspe5.mongodb.net/"
+`${process.env.MONGODB_URI}`
     );
     console.log("Connected to MongoDB");
   } catch (err) {
