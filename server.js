@@ -11,26 +11,22 @@ const port = process.env.PORT || 10000;
 
 dotenv.config();
 
-// ✅ Configure CORS properly
 const allowedOrigins = [
-  "https://instagram-frontend-iota.vercel.app", // your Vercel frontend
-  "http://localhost:5173", // optional: for local testing
+  "https://instagram-frontend-iota.vercel.app",
+  "http://localhost:5173"
 ];
 
 app.use(
   cors({
     origin: allowedOrigins,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
-
-// ✅ Optional: handle preflight requests explicitly
 app.options("*", cors());
 
 app.use(express.json());
 
-// ✅ Connect to MongoDB
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI);
@@ -42,12 +38,10 @@ const connect = async () => {
 
 connect();
 
-// ✅ Routes
 app.use("/", userRouter);
 app.use("/", postRouter);
 app.use("/", commentRouter);
 
-// ✅ Start server
 app.listen(port, () => {
   console.log(`🚀 Instagram backend running on port ${port}`);
 });
